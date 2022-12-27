@@ -25,27 +25,28 @@
         })
 function startGame() {
     document.querySelector('#startBtn').style.display = "none"
-    random = Math.floor(Math.random() * parseInt(apiData[index].price));
+    random = Math.floor(Math.random() * parseInt(apiData[index].price * 6.99)) * 2;
+    console.log(random);
     gameArt.innerHTML = `<img src="${apiData[index].image}" alt="">`
-    console.log("Rigtigt");
-    document.querySelector('#randNum').innerText = "Er " + " er den rigtige pris over eller under " + random + " DKK"
+    
+    document.querySelector('#randNum').innerText = random + " DKK"
     document.querySelector('#priceP').innerText = parseInt(apiData[index].price * 6.99) + " DKK"
 }
 
 function check(obj) {
     switch (obj.innerText) {
         case "Over":
-            if (parseInt(apiData[index].price) > random) {
+            if (parseInt(apiData[index].price * 6.99) > random) {
                 nextItem()
             } else {console.log("Wrong");}
             break;
             case "Under":
-                if (parseInt(apiData[index].price) < random) {
+                if (parseInt(apiData[index].price * 6.99) < random) {
                     nextItem()
                 }else {console.log("Wrong");}
                 break;
                 case "Det er prisen":
-                    if (parseInt(apiData[index].price) === random) {
+                    if (parseInt(apiData[index].price * 6.99) === random) {
                         nextItem()
                     } else {console.log("Wrong");}
                     break;
@@ -56,6 +57,7 @@ function check(obj) {
 }
 
 function nextItem() {
+    console.log("Rigtigt");
     index = Math.floor(Math.random() * apiData.length) + 1;
     startGame()
 }
