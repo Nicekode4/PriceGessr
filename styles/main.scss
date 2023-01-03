@@ -1,6 +1,25 @@
 html{
     
 }
+#priceP{
+    display: none;
+}
 img{
-    width: 100px;
+    width: 200px;
+}
+
+#gameSec{
+text-align: center;
+article{
+
+    height: 300px;
+}
+}
+#btnDiv{
+    display: flex;
+    justify-content: center;
+    button{
+     margin: 1vw;   
+    }
+    
 }

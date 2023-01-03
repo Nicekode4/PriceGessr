@@ -1,3 +1,22 @@
+#priceP {
+  display: none;
+}
+
 img {
-  width: 100px;
+  width: 200px;
+}
+
+#gameSec {
+  text-align: center;
+}
+#gameSec article {
+  height: 300px;
+}
+
+#btnDiv {
+  display: flex;
+  justify-content: center;
+}
+#btnDiv button {
+  margin: 1vw;
 }/*# sourceMappingURL=main.css.map */
