@@ -17,7 +17,7 @@ img {
   display: none;
 }
 #gameSec article {
-  height: 300px;
+  height: 40vh;
 }
 
 #btnDiv {
@@ -35,8 +35,9 @@ img {
   color: white;
 }
 
-#startBtn {
+#resetBtn {
   width: 100%;
+  margin-top: 60vh;
   margin-bottom: 5vh;
   background-color: purple;
   font-size: 100px;
@@ -62,8 +63,7 @@ img {
 }
 
 #gameArt {
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 20vh;
 }
 
 #platform {
@@ -77,17 +77,39 @@ img {
 
 #pointDiv {
   display: grid;
-  grid-template-columns: 10% 10% 120%;
-  color: white;
+  grid-template-columns: 60% 10%;
 }
 #pointDiv h3 {
   font-size: 70px;
   margin: 0;
   padding: 0;
 }
-#pointDiv #correctCount {
+
+#counterDiv {
+  display: grid;
+  grid-template-columns: 10% 10%;
+  color: white;
+}
+#counterDiv #correctCount {
   margin-top: 1vh;
+  margin-bottom: 0;
   font-size: 30px;
   height: 5vh;
   width: 10vw;
+}
+#counterDiv #correctCount2 {
+  margin-top: 0;
+  font-size: 30px;
+  height: 5vh;
+  width: 10vw;
+}
+#counterDiv #livesH2 {
+  margin-top: 1vh;
+  margin-left: 5vw;
+}
+#counterDiv #pointH2 {
+  margin-bottom: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-left: 5vw;
 }/*# sourceMappingURL=main.css.map */

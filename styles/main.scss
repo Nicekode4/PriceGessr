@@ -15,7 +15,7 @@ text-align: center;
 display: none;
 article{
 
-    height: 300px;
+    height: 40vh;
 }
 }
 #btnDiv{
@@ -33,9 +33,9 @@ article{
     }
     
 }
-#resetBtn{}
-#startBtn{
+#resetBtn{
     width: 100%;
+    margin-top: 60vh;
     margin-bottom: 5vh;
     background-color: purple;
     font-size: 100px;
@@ -60,7 +60,7 @@ article{
     }
 }
  #gameArt{
-    height: fit-content;
+    height: 20vh;
  }
 #platform{
     display: none;
@@ -72,17 +72,40 @@ article{
 }
 #pointDiv{
     display: grid;
-    grid-template-columns: 10% 10% 120%;
-    color: white;
+    grid-template-columns: 60% 10%;
     h3{
         font-size: 70px;
         margin: 0;
         padding: 0;
     }
+}
+#counterDiv{
+    display: grid;
+    grid-template-columns: 10% 10%;
+    color: white;
+    
+
  #correctCount{
     margin-top: 1vh;
+    margin-bottom: 0;
     font-size: 30px;
     height: 5vh;
     width: 10vw;
-}   
+}  
+#correctCount2{
+    margin-top: 0;
+    font-size: 30px;
+    height: 5vh;
+    width: 10vw;
+} 
+#livesH2{
+    margin-top: 1vh;
+    margin-left: 5vw;
+}
+#pointH2{
+    margin-bottom: 0;
+    height: fit-content;
+    
+    margin-left: 5vw;
+}
 }

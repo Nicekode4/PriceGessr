@@ -11,20 +11,22 @@
 <body>
     
     
-    
+    <button type="button" onclick="resetGame()" id="resetBtn">New game</button>
     <section id="gameSec">
-        <button type="button" onclick="startGame()" id="resetBtn">Reset</button>
+        
         <div id="pointDiv">
+        <div id="counterDiv">
         <p id="correctCount">✔️</p>
         <h2 id="pointH2">0</h2>
+        <p id="correctCount2">❤️</p>
+        <h2 id="livesH2">3</h2>
+    </div>
+        
         <h3 id="counter">0/10</h3>
-        <p id="correctCount">✔️</p>
-        <h2 id="pointH2">0</h2>
+
     </div>
         <h1>Er den rigtige pris over eller under?</h1>
-        <article id="gameArt">
-            
-        </article>
+        <article id="gameArt"></article>
         <div id="platform"></div>
         
         <p id="priceP"></p>
@@ -39,7 +41,7 @@
     
     </section>
 
-    <button type="button" onclick="startGame()" id="startBtn">Start</button>
+    
     <!-- <h2>Spil efter kategori</h2>
     <ul>
         <li>Tech</li>
