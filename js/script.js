@@ -1,9 +1,12 @@
 
     const url = 'https://fakestoreapi.com/products'
     const gameArt = document.querySelector('#gameArt')
+    const gameSec = document.querySelector('#gameSec')
     let index = 0
     let random = 0
     let apiData;
+    let point = 0
+    let counter = 0
     
     fetch(url)
         .then(response => {
@@ -24,32 +27,68 @@
 
         })
 function startGame() {
+    gameSec.style.display = "block"
     document.querySelector('#startBtn').style.display = "none"
     random = Math.floor(Math.random() * parseInt(apiData[index].price * 6.99)) * 2;
     console.log(random);
     gameArt.innerHTML = `<img src="${apiData[index].image}" alt="">`
     
-    document.querySelector('#randNum').innerText = random + " DKK"
+    document.querySelector('#randNum').innerText = random
     document.querySelector('#priceP').innerText = parseInt(apiData[index].price * 6.99) + " DKK"
 }
 
 function check(obj) {
     switch (obj.innerText) {
         case "Over":
-            if (parseInt(apiData[index].price * 6.99) > random) {
-                nextItem()
-            } else {console.log("Wrong");}
+            if (parseInt(apiData[index].price * 6.99) > random || parseInt(apiData[index].price * 6.99) === random) {
+                
+
+                if (counter < 11) {
+                    obj.style.backgroundColor = "green"
+                    point++
+                 counter++  
+                 document.querySelector("#counter").innerText = counter + "/10"
+                 document.querySelector("#pointH2").innerText = point
+                 setTimeout(() => {
+                     obj.style.backgroundColor = "purple"
+                     nextItem()
+                 }, 1000);
+                }else{
+                    alert("You won!")
+                }
+                
+
+            } else {
+                alert("You lost")
+                gameSec.style.display = "none"
+                document.querySelector('#startBtn').style.display = "block"
+            }
             break;
             case "Under":
-                if (parseInt(apiData[index].price * 6.99) < random) {
-                    nextItem()
-                }else {console.log("Wrong");}
-                break;
-                case "Det er prisen":
-                    if (parseInt(apiData[index].price * 6.99) === random) {
+                if (parseInt(apiData[index].price * 6.99) < random || parseInt(apiData[index].price * 6.99) === random) {
+                    
+
+                    if (counter < 11) {                    
+                    obj.style.backgroundColor = "green"
+                    point++
+                        counter++  
+                        document.querySelector("#counter").innerText = counter + "/10"
+                        document.querySelector("#pointH2").innerText = point
+                    setTimeout(() => {
+                        obj.style.backgroundColor = "purple"
                         nextItem()
-                    } else {console.log("Wrong");}
-                    break;
+                    }, 1000);
+                       }else{
+                           alert("You won!")
+                       }
+                    
+                }else {
+                    alert("You lost")
+                    gameSec.style.display = "none"
+                    document.querySelector('#startBtn').style.display = "block"
+
+            }
+                break;
         default:
             console.log("Wrong");
             break;

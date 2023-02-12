@@ -1,5 +1,7 @@
 html{
-    
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 #priceP{
     display: none;
@@ -10,16 +12,77 @@ img{
 
 #gameSec{
 text-align: center;
+display: none;
 article{
 
     height: 300px;
 }
 }
 #btnDiv{
-    display: flex;
+    display: grid;
     justify-content: center;
+    width: 100%;
     button{
-     margin: 1vw;   
+        background-color: purple;
+        border-radius: 10px;
+     margin: 1vw;
+     width: 90vw;
+     height: 10vh;
+     font-size: 30px;
+     color: white;   
     }
     
+}
+#resetBtn{}
+#startBtn{
+    width: 100%;
+    margin-bottom: 5vh;
+    background-color: purple;
+    font-size: 100px;
+    color: white;
+}
+#randNumDiv{
+    width: 100%;
+    margin-bottom: 5vh;
+    background-color: purple;
+    font-size: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    p {
+        color: white;
+        margin: 0;
+    }
+    #randNum{
+
+        color: white;
+        letter-spacing: 5vw;
+    }
+}
+ #gameArt{
+    height: fit-content;
+ }
+#platform{
+    display: none;
+    background-color: purple;
+    margin-left: 40%;
+    width: 20vw;
+    height: 5vh;
+    border-radius: 50px;
+}
+#pointDiv{
+    display: grid;
+    grid-template-columns: 10% 10% 120%;
+    color: white;
+    h3{
+        font-size: 70px;
+        margin: 0;
+        padding: 0;
+    }
+ #correctCount{
+    margin-top: 1vh;
+    font-size: 30px;
+    height: 5vh;
+    width: 10vw;
+}   
 }

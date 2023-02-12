@@ -9,22 +9,37 @@
     <title>PriceGessr</title>
 </head>
 <body>
-    <button type="button" onclick="startGame()" id="startBtn">Start</button>
+    
+    
+    
     <section id="gameSec">
+        <button type="button" onclick="startGame()" id="resetBtn">Reset</button>
+        <div id="pointDiv">
+        <p id="correctCount">✔️</p>
+        <h2 id="pointH2">0</h2>
+        <h3 id="counter">0/10</h3>
+        <p id="correctCount">✔️</p>
+        <h2 id="pointH2">0</h2>
+    </div>
         <h1>Er den rigtige pris over eller under?</h1>
         <article id="gameArt">
             
         </article>
+        <div id="platform"></div>
         
         <p id="priceP"></p>
+        <div id="randNumDiv"><p>$</p><p id="randNum"></p></div>
+        
         <div id="btnDiv">
             <button type="button" onclick="check(this)">Over</button>
-        <p id="randNum"></p>
+        
         <button type="button" onclick="check(this)">Under</button>
     </div>
         
-
+    
     </section>
+
+    <button type="button" onclick="startGame()" id="startBtn">Start</button>
     <!-- <h2>Spil efter kategori</h2>
     <ul>
         <li>Tech</li>
