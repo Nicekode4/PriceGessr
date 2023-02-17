@@ -37,7 +37,7 @@
             counter = 0
             lives = 3
             document.querySelector('#randNum').innerText = random
-            document.querySelector('#priceP').innerText = parseInt(apiData[index].price * 6.99) + " DKK"
+            document.querySelector('#priceP').innerText = ""
             document.querySelector("#pointH2").innerText = point
             document.querySelector("#livesH2").innerText = lives
             document.querySelector("#counter").innerText = counter + "/10"
@@ -50,7 +50,7 @@ function startGame() {
     gameArt.innerHTML = `<img src="${apiData[index].image}" alt="">`
     
     document.querySelector('#randNum').innerText = random
-    document.querySelector('#priceP').innerText = parseInt(apiData[index].price * 6.99) + " DKK"
+    document.querySelector('#priceP').innerText = ""
 }
 
 function check(obj) {
@@ -65,12 +65,14 @@ function check(obj) {
                  counter++  
                  document.querySelector("#counter").innerText = counter + "/10"
                  document.querySelector("#pointH2").innerText = point
-                 
+document.querySelector("#priceP").innerText = "Den rigtige pris: " + parseInt(apiData[index].price * 6.99) + " DKK"
 
                 }else{
                     alert("You won!")
                 }
+                
                 setTimeout(() => {
+                    document.querySelector("#priceP").innerText = "" 
                     obj.style.backgroundColor = "purple"
                     nextItem()
                 }, 1000);
@@ -87,7 +89,9 @@ function check(obj) {
                     lives--
                     document.querySelector("#livesH2").innerText = lives
                     obj.style.backgroundColor = "red"
+                    document.querySelector("#priceP").innerText = "Den rigtige pris: " + parseInt(apiData[index].price * 6.99) + " DKK"
                     setTimeout(() => {
+                        document.querySelector("#priceP").innerText = ""  
                         obj.style.backgroundColor = "purple"
                         nextItem()
                     }, 1000);
@@ -105,7 +109,9 @@ function check(obj) {
                         counter++  
                         document.querySelector("#counter").innerText = counter + "/10"
                         document.querySelector("#pointH2").innerText = point
-                    setTimeout(() => {
+                        document.querySelector("#priceP").innerText = "Den rigtige pris: " + parseInt(apiData[index].price * 6.99) + " DKK"
+                        setTimeout(() => {
+                            document.querySelector("#priceP").innerText = ""  
                         obj.style.backgroundColor = "purple"
                         nextItem()
                     }, 1000);
@@ -124,7 +130,9 @@ function check(obj) {
                             lives--
                             document.querySelector("#livesH2").innerText = lives
                             obj.style.backgroundColor = "red"
+                            document.querySelector("#priceP").innerText = "Den rigtige pris: " + parseInt(apiData[index].price * 6.99) + " DKK"
                             setTimeout(() => {
+                                document.querySelector("#priceP").innerText = "" 
                                 obj.style.backgroundColor = "purple"
                                 nextItem()
                             }, 1000);

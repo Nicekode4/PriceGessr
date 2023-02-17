@@ -5,7 +5,7 @@ html {
 }
 
 #priceP {
-  display: none;
+  height: 1vh;
 }
 
 img {
@@ -17,7 +17,7 @@ img {
   display: none;
 }
 #gameSec article {
-  height: 40vh;
+  height: 39vh;
 }
 
 #btnDiv {
