@@ -45,7 +45,8 @@ img {
 }
 
 #randNumDiv {
-  width: 100%;
+  width: 95%;
+  margin-left: 2vw;
   margin-bottom: 5vh;
   background-color: purple;
   font-size: 100px;

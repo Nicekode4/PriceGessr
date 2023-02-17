@@ -29,7 +29,7 @@
         })
         function resetGame() {
             gameSec.style.display = "block"
-            document.querySelector('#resetBtn').style.display = "none"
+            document.querySelector('#preGame').style.display = "none"
             random = Math.floor(Math.random() * parseInt(apiData[index].price * 6.99)) * 2;
             console.log(random);
             gameArt.innerHTML = `<img src="${apiData[index].image}" alt="">`
@@ -80,8 +80,8 @@ function check(obj) {
                 
                 lives--
                 document.querySelector("#livesH2").innerText = lives
-                document.querySelector("#resetBtn").style.display = "block"
                 gameSec.style.display = "none"
+                document.querySelector('#preGame').style.display = "block"
                 alert("You lost")  
                 }else{
                     lives--
@@ -117,8 +117,8 @@ function check(obj) {
                     if (lives < 2) {
                         lives--
                         document.querySelector("#livesH2").innerText = lives
-                        document.querySelector("#resetBtn").style.display = "block"
                         gameSec.style.display = "none"
+                        document.querySelector('#preGame').style.display = "block"
                         alert("You lost")  
                         }else{
                             lives--
