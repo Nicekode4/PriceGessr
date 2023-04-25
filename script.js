@@ -1,4 +1,8 @@
-
+if('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('./sw.js')
+	.then(reg => console.log('service worker registered', reg))
+	.catch(err => console.error('service worker not registered', err)) 
+}
     const url = 'https://fakestoreapi.com/products'
     const gameArt = document.querySelector('#gameArt')
     const gameSec = document.querySelector('#gameSec')
