@@ -1,10 +1,11 @@
-// Define a cache name
+// Navnet på din cache
 const CACHE_NAME = 'my-pwa-cache-v1';
 
-// List the files you want to cache
+// De filer du vil cache
 const urlsToCache = [
   '/',
   '/index.html',
+  '/fallback.html',
   '/main.css',
   '/script.js',
   '/sw.js',
@@ -35,48 +36,62 @@ self.addEventListener('activate', event => {
 	return;
 })
 self.addEventListener('fetch', event => {
-  // Check if the request is for your API endpoint or an image
   if (event.request.url.startsWith('https://fakestoreapi.com/products')) {
     event.respondWith(
-      // Try to get the response from the cache
+      // forespør et svar fra cachen
       caches.match(event.request).then(response => {
         if (response) {
-          // If there's a cached response, return it
+          // Er der noget der er cached vil dette komme tilbage
           return response;
         }
-        // Otherwise, fetch the response from the API and cache it
+        // Hvis ikke der er noget i cachen, så vil siden fetch APi'et og cache den
         return fetch(event.request).then(response => {
           const clonedResponse = response.clone();
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, clonedResponse);
           });
           return response;
+        }).catch(() => {
+          // Hvis det ovenover fejler, så viser den fallback siden
+          return caches.match('/fallback.html');
         });
       })
     );
   } else if (event.request.url.match(/\.(jpg|jpeg|png|gif)$/)) {
     event.respondWith(
-      // Try to get the image from the cache
+      // Forspør billeder fra cachen
       caches.match(event.request).then(response => {
         if (response) {
-          // If there's a cached image, return it
+          // Findes det, så ommer til retur
           return response;
         }
-        // Otherwise, fetch the image and cache it
+        // Ellers fetches bllederne og gemmes i cachen
         return fetch(event.request).then(response => {
           const clonedResponse = response.clone();
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, clonedResponse);
           });
           return response;
+        }).catch(() => {
+          // Hvis fetch ikke kan fuldføres, vises fallback billedet
+          return caches.match('/fallback-image.jpg');
         });
       })
     );
   } else {
-    // For all other requests, use the default caching strategy
+    // For alt andet bruges den standart caching
     event.respondWith(
       caches.match(event.request).then(response => {
-        return response || fetch(event.request);
+        return response || fetch(event.request).then(response => {
+          const clonedResponse = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, clonedResponse);
+          });
+          return response;
+        }).catch(() => {
+          // Hvis fetch ikke kan fuldføres, vises fallback siden
+          return caches.match('/fallback.html');
+        });
       })
     );
   }
