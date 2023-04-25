@@ -35,17 +35,49 @@ self.addEventListener('activate', event => {
 	return;
 })
 self.addEventListener('fetch', event => {
-	console.log(event.request);
-  if (!(event.request.url.indexOf('http') === 0)) {
-   event.respondWith(
-    caches.match(event.request).then(cacheRes => {
-      return cacheRes || fetch(event.request).then(fetchRes => {
-        return caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request.url, fetchRes.clone())
-          return fetchRes
-        })
+  // Check if the request is for your API endpoint or an image
+  if (event.request.url.startsWith('https://fakestoreapi.com/products')) {
+    event.respondWith(
+      // Try to get the response from the cache
+      caches.match(event.request).then(response => {
+        if (response) {
+          // If there's a cached response, return it
+          return response;
+        }
+        // Otherwise, fetch the response from the API and cache it
+        return fetch(event.request).then(response => {
+          const clonedResponse = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, clonedResponse);
+          });
+          return response;
+        });
       })
-    })
-   ) 
+    );
+  } else if (event.request.url.match(/\.(jpg|jpeg|png|gif)$/)) {
+    event.respondWith(
+      // Try to get the image from the cache
+      caches.match(event.request).then(response => {
+        if (response) {
+          // If there's a cached image, return it
+          return response;
+        }
+        // Otherwise, fetch the image and cache it
+        return fetch(event.request).then(response => {
+          const clonedResponse = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, clonedResponse);
+          });
+          return response;
+        });
+      })
+    );
+  } else {
+    // For all other requests, use the default caching strategy
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        return response || fetch(event.request);
+      })
+    );
   }
-})
+});
