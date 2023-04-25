@@ -2,7 +2,7 @@
 const CACHE_NAME = 'my-pwa-cache-v1';
 
 // De filer du vil cache
-const urlsToCache = [
+const assets = [
   '/',
   '/index.html',
   '/fallback.html',
@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        return cache.addAll(urlsToCache)
+        return cache.addAll(assets)
           .catch(error => {
             console.error('Failed to cache', error);
           });
