@@ -6,6 +6,7 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/fallback.html',
+  'fallback-image.jpg',
   '/main.css',
   '/script.js',
   '/sw.js',
@@ -79,8 +80,8 @@ self.addEventListener('fetch', event => {
       })
     );
   } else {
-    
-    // For alt andet bruges den standart caching som er den statiske
+
+    // For alt andet bruges den standard caching som er den statiske
     event.respondWith(
       caches.match(event.request).then(response => {
         return response || fetch(event.request).then(response => {
