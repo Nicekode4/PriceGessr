@@ -1,0 +1,28 @@
+{
+    "name": "PriceGessr",
+    "short_name": "PriceGessr",
+    "description": "A game to guess teh price of an item",
+    "id": "./index",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "256x256",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "./assets/logo192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/logo192.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "black",
+    "background_color": "black",
+    "display": "standalone",
+    "orientation": "potrait",
+    "start_url": "/index.html"
+}
